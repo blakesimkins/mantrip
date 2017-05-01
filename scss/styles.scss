@@ -1,0 +1,51 @@
+@import "normalize";
+
+////VARIABLES//////
+$raleway: 'Raleway', sans-serif;
+$oswald: 'Oswald', sans-serif;
+
+body {
+  font-family: $raleway;
+  margin: 0;
+  height: 100%;
+}
+.title--container {
+  background: url('../img/hero.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.title--intro {
+  font-weight: 400;
+  text-align: center;
+  padding: 32px 0 0;
+  margin: 0;
+  font-size: 24px;
+}
+
+.title--header {
+  font-family: $oswald;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 124px;
+  letter-spacing: 50px;
+  text-align: center;
+  margin: 0;
+}
+
+.title--date {
+  text-align: center;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.title--year {
+  display: block;
+}
+
+.content--container {
+  background: yellow;
+}
