@@ -375,7 +375,7 @@ body {
   height: 100%; }
 
 .title--container {
-  background: url("../img/hero.jpg");
+  background: url("../img/hero.jpg") center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -407,4 +407,6 @@ body {
   display: block; }
 
 .content--container {
-  background: yellow; }
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px; }
