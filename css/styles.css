@@ -415,3 +415,7 @@ body {
   font-size: 12px;
   font-weight: normal;
   font-style: italic; }
+
+.txt-backup {
+  color: #888;
+  font-style: italic; }
