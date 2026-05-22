@@ -1,64 +1,286 @@
 @import "normalize";
 
-////VARIABLES//////
 $raleway: 'Raleway', sans-serif;
 $oswald: 'Oswald', sans-serif;
+
+$bg: #0d0d0d;
+$bg-card: #161616;
+$text: #e0e0e0;
+$text-muted: #666;
+$accent: #c9a84c;
+$border: #242424;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: $raleway;
   margin: 0;
-  height: 100%;
+  background: $bg;
+  color: $text;
 }
-.title--container {
-  background: url('../img/hero.jpg') center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+// HERO
+
+.hero {
+  position: relative;
   height: 100vh;
-  width: 100%;
-}
-
-.title--intro {
-  font-weight: 400;
+  min-height: 500px;
+  background: url('../img/hero.jpg') center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 32px 0 0;
-  margin: 0;
-  font-size: 24px;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: 0 24px;
+  }
+
+  &__eyebrow {
+    font-family: $raleway;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: $accent;
+    margin: 0 0 20px;
+  }
+
+  &__title {
+    font-family: $oswald;
+    font-weight: 900;
+    font-size: clamp(72px, 14vw, 160px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 24px;
+    line-height: 1;
+  }
+
+  &__date {
+    font-family: $raleway;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $text;
+    margin: 0;
+  }
 }
 
-.title--header {
-  font-family: $oswald;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 124px;
-  letter-spacing: 50px;
-  text-align: center;
-  margin: 0;
-}
+// CONTENT
 
-.title--date {
-  text-align: center;
-  margin: 0;
-  font-weight: 400;
-  font-size: 24px;
-}
-
-.title--year {
-  display: block;
-}
-
-.content--container {
+.content {
+  max-width: 900px;
   margin: 0 auto;
-  max-width: 1440px;
-  padding: 40px;
+  padding: 80px 40px 120px;
 }
 
-.txt-note {
-  font-size: 12px;
-  font-weight: normal;
+.section {
+  margin-bottom: 72px;
+
+  &__heading {
+    font-family: $oswald;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: $accent;
+    margin: 0 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $border;
+  }
+
+  &__body {
+    font-size: 17px;
+    line-height: 1.8;
+    color: $text;
+    margin: 0;
+    max-width: 660px;
+  }
+}
+
+// SCHEDULE
+
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: $border;
+  border: 1px solid $border;
+
+  @media (max-width: 680px) { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 400px) { grid-template-columns: 1fr; }
+
+  &__day {
+    background: $bg-card;
+    padding: 24px 20px;
+  }
+
+  &__day-header {
+    margin-bottom: 18px;
+  }
+
+  &__day-name {
+    display: block;
+    font-family: $oswald;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  &__day-date {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $accent;
+    margin-top: 5px;
+  }
+
+  &__events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: 13px;
+      color: $text;
+      padding: 8px 0;
+      border-bottom: 1px solid $border;
+      line-height: 1.5;
+
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: $border;
+      transition: color 0.15s, text-decoration-color 0.15s;
+
+      &:hover {
+        color: $accent;
+        text-decoration-color: $accent;
+      }
+    }
+  }
+}
+
+.note {
+  display: block;
+  font-size: 11px;
+  font-style: italic;
+  color: $text-muted;
+  margin-top: 4px;
+}
+
+.backup {
+  color: $text-muted !important;
   font-style: italic;
 }
 
-.txt-backup {
-  color: #888;
-  font-style: italic;
+// EVENTS
+
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    font-family: $oswald;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $text;
+    padding: 8px 16px;
+    border: 1px solid $border;
+  }
+}
+
+// POWER RANKINGS
+
+.rankings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: rankings;
+
+  li {
+    counter-increment: rankings;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid $border;
+    font-size: 17px;
+    font-weight: 600;
+    color: $text;
+
+    &::before {
+      content: counter(rankings, decimal-leading-zero);
+      font-family: $oswald;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: $text-muted;
+      min-width: 28px;
+    }
+
+    &:first-child {
+      color: #fff;
+      font-size: 20px;
+
+      &::before {
+        color: $accent;
+      }
+    }
+  }
+}
+
+// MVP
+
+.mvp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid $border;
+    font-size: 16px;
+    color: $text;
+  }
+}
+
+.mvp-year {
+  font-family: $oswald;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: $accent;
+  min-width: 48px;
 }
